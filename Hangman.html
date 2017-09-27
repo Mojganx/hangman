@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Try outs</title>
+</head>
+
+<body>
+  <h1>Hangman</h1>
+  <script>
+
+  var name = prompt("Whats your name?");
+  console.log("Hello " +  name);
+
+  //making array of words and choosing a random word
+
+  var words = [
+    "bananas",
+    "monkeyballs",
+    "aware",
+    "candle",
+    "crackers",
+    "magazine"
+  ]
+
+  var word = words[Math.floor(Math.random() * words.length)];
+
+  //next we are creating an answer array and fill it with underscores that match the number of letters in the picked word
+
+  var answerArray = [];
+  for (var i = 0; i < word.length; i++) {
+    answerArray[i] = "_"
+  }
+
+  var remainingLetters = word.length
+
+  while (remainingLetters > 0 ) {
+  alert(answerArray.join(" "));
+
+  var guess = prompt("Guess a single letter please, or you can click cancel to exit the game");
+    if (guess == null) {
+      exit;
+    } else if (guess.length !== 1) {
+      alert("please enter a single letter");
+    } else {
+      for(var j = 0; j < word.length; j++){
+        if(word[j] === guess) {
+          answerArray[j] = guess;
+          remainingLetters--;
+        }
+      }
+    }
+  }
+
+  alert(answerArray.join(" "));
+  alert("Very very good! The answer was " + word);
+
+
+  </script>
+</body>
+</html>
